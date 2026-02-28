@@ -1,0 +1,80 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  @include flex-center;
+  padding: $spacing-4;
+  animation: fade-in $transition-base;
+}
+
+.modal {
+  background: $surface;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  width: 100%;
+  max-width: 480px;
+  animation: slide-up $transition-base;
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-5 $spacing-6;
+    border-bottom: 1px solid $border;
+
+    h2 {
+      font-size: $font-size-xl;
+      font-weight: 700;
+      color: $text-primary;
+      margin: 0;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-muted;
+    font-size: $font-size-xl;
+    padding: $spacing-1;
+    border-radius: $radius-sm;
+    transition: color $transition-fast;
+    line-height: 1;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  &__body {
+    padding: $spacing-6;
+    font-size: $font-size-base;
+    color: $text-secondary;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__footer {
+    @include flex-between;
+    padding: $spacing-4 $spacing-6;
+    border-top: 1px solid $border;
+    background: $background;
+    border-radius: 0 0 $radius-xl $radius-xl;
+    gap: $spacing-3;
+    justify-content: flex-end;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

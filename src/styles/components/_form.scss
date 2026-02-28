@@ -1,0 +1,88 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.form-card {
+  @include card;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.form-header {
+  padding: $spacing-6;
+  border-bottom: 1px solid $border;
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 $spacing-1;
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.form-body {
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+
+  label {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-primary;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: $spacing-2 $spacing-3;
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    font-size: $font-size-base;
+    color: $text-primary;
+    background: $surface;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    font-family: $font-family;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    }
+
+    &::placeholder {
+      color: $text-muted;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  &__error {
+    font-size: $font-size-sm;
+    color: $danger;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-3;
+  padding: $spacing-4 $spacing-6;
+  border-top: 1px solid $border;
+  background: $background;
+  border-radius: 0 0 $radius-lg $radius-lg;
+}
