@@ -1,0 +1,106 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.data-table-container {
+  overflow-x: auto;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  box-shadow: $shadow-sm;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+  background: $surface;
+
+  thead {
+    background: $background;
+    border-bottom: 2px solid $border;
+
+    th {
+      padding: $spacing-3 $spacing-4;
+      text-align: left;
+      font-weight: 600;
+      color: $text-secondary;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+
+      &--actions {
+        text-align: right;
+        width: 120px;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $border;
+      transition: background-color $transition-fast;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: rgba($primary, 0.03);
+      }
+    }
+
+    td {
+      padding: $spacing-3 $spacing-4;
+      color: $text-primary;
+      @include truncate;
+      max-width: 250px;
+
+      &--actions {
+        text-align: right;
+        white-space: nowrap;
+
+        .btn-group {
+          display: inline-flex;
+          gap: $spacing-2;
+        }
+      }
+
+      &--empty {
+        text-align: center;
+        color: $text-muted;
+        padding: $spacing-10;
+      }
+    }
+  }
+}
+
+.table-toolbar {
+  @include flex-between;
+  padding: $spacing-4 $spacing-6;
+  border-bottom: 1px solid $border;
+  background: $surface;
+  border-radius: $radius-lg $radius-lg 0 0;
+  flex-wrap: wrap;
+  gap: $spacing-3;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-2;
+  }
+}
+
+.table-footer {
+  @include flex-between;
+  padding: $spacing-3 $spacing-4;
+  border-top: 1px solid $border;
+  background: $background;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  border-radius: 0 0 $radius-lg $radius-lg;
+}
